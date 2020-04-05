@@ -1,1 +1,1 @@
-# Napisz program, który zsumuje liczby z data.xml.
+# Napisz program w dowolnym języku programowania, kóry doda wszystkie liczby z pliku data.xml i wypisze wynik na standardowym wyjściu. Na poczatek zrob sobie fork tego projektu na swoim koncie github. Nastepnie dodaj na swojej kopii plik, np. main.py z kodem źródłowym. Na koniec zgłoś pull request do mnie. 
