@@ -14,14 +14,23 @@ namespace ReadFileXML
         {
             XmlTextReader reader = new XmlTextReader("data.xml");
             int sum = 0;
+            bool scanOrNo = true;
             while (reader.Read())
             {
+
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "number")
                 {
                     string s1 = reader.ReadElementString();
-                    sum += int.Parse(s1);
+                    if (scanOrNo)
+                        sum += int.Parse(s1);
+
                     Console.WriteLine(s1);
                 }
+                else if (reader.Name == "ignore-it")
+                {
+                    scanOrNo = false;
+                }
+                      
             }
             Console.WriteLine("sum = "+sum);       
             Console.ReadKey();
