@@ -1,0 +1,6 @@
+C:\Users\kamil\source\repos\ReadFileXML\ReadFileXML\bin\Debug\ReadFileXML.exe.config
+C:\Users\kamil\source\repos\ReadFileXML\ReadFileXML\bin\Debug\ReadFileXML.exe
+C:\Users\kamil\source\repos\ReadFileXML\ReadFileXML\bin\Debug\ReadFileXML.pdb
+C:\Users\kamil\source\repos\ReadFileXML\ReadFileXML\obj\Debug\ReadFileXML.csprojAssemblyReference.cache
+C:\Users\kamil\source\repos\ReadFileXML\ReadFileXML\obj\Debug\ReadFileXML.exe
+C:\Users\kamil\source\repos\ReadFileXML\ReadFileXML\obj\Debug\ReadFileXML.pdb
