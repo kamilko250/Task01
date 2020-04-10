@@ -18,10 +18,17 @@ namespace ReadFileXML
             while (reader.Read())
             {
 
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "number")
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "number" )
                 {
-                    string s1 = reader.ReadElementString();
-                    if (scanOrNo % 2 == 0)
+                    string a = "NULL";
+                    if(reader.HasAttributes)
+                        a = reader.GetAttribute("ignore-it");
+                   
+                    Console.WriteLine("string:" + a);
+                    
+                    string s1 = reader.ReadElementContentAsString();
+
+                    if (scanOrNo % 2 == 0 && a  != "true" )
                         sum += int.Parse(s1);
 
                     Console.WriteLine(s1);
