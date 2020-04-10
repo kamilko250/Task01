@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 	Wprowadzamy przestrzenie nazw:
-	http://include/this/number - to przestrzeń domyślna w tym dokumencie XML;
-	http://exclude/this/number - to przestrzeń ns1, elementy które się w niej znajdują powinne być pominięte przy sumowaniu.
+	http://ignore/it - to przestrzeń ns1, elementy które się w niej znajdują powinne być również pominięte.
 	Jaki wynik teraz otrzymasz?
+	Uwaga: Dodatkowo zapoznanie z <![CDATA[:))))]]>
 -->
 <numbers xmlns:ns1="http://ignore/it">
 	<number ignore-it="true">1</number>
