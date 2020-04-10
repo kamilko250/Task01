@@ -21,12 +21,13 @@ namespace ReadFileXML
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "number" )
                 {
                     string a = "NULL";
-                    string s1 = reader.ReadElementString();
-                    if(reader.AttributeCount != 0)
+                    if(reader.HasAttributes)
                         a = reader.GetAttribute("ignore-it");
+                    
                     Console.WriteLine("string:" + a);
-                    if (scanOrNo % 2 == 0 && a  != "true" )
 
+                    string s1 = reader.ReadElementString();
+                    if (scanOrNo % 2 == 0 && a  != "true" )
                         sum += int.Parse(s1);
 
                     Console.WriteLine(s1);
