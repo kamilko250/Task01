@@ -23,10 +23,11 @@ namespace ReadFileXML
                     string a = "NULL";
                     if(reader.HasAttributes)
                         a = reader.GetAttribute("ignore-it");
-                    
+                   
                     Console.WriteLine("string:" + a);
+                    
+                    string s1 = reader.ReadElementContentAsString();
 
-                    string s1 = reader.ReadElementString();
                     if (scanOrNo % 2 == 0 && a  != "true" )
                         sum += int.Parse(s1);
 
