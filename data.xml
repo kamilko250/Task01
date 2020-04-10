@@ -5,7 +5,7 @@
 	http://exclude/this/number - to przestrzeń ns1, elementy które się w niej znajdują powinne być pominięte przy sumowaniu.
 	Jaki wynik teraz otrzymasz?
 -->
-<numbers xmlns="http://include/this/number" xmlns:n1="http://exclude/this/number">
+<numbers xmlns:ns1="http://ignore/it">
 	<number ignore-it="true">1</number>
 	<number>2</number>
 	<number>3</number>
@@ -16,13 +16,13 @@
 	    <number>300</number>
 	    <number>400</number>
 	</ignore-it>
-	<number>5</number>
+	<ns1:number>5</ns1:number>
 	<!--Jak sama nazwa mowi elementy z przestrzeni ns1 powinne byc pomijane-->
-	<ns1:number>6</ns1:number>
+	<number>6</number>
 	<number><![CDATA[7]]></number>
 	<!--Tym razem pusta wartość:)-->
 	<number></number>
-	<number><![CDATA[8]]></number>
+	<ns1:number><![CDATA[8]]></ns1:number>
 	<!--Extra element poza tagiem-->
 	100
 </numbers>
