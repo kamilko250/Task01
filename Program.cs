@@ -25,6 +25,7 @@ namespace ReadFileXML
                     string b = "NULL";
                     if (reader.HasAttributes)
                         a = reader.GetAttribute("ignore-it");
+                    if (reader.Namespaces)
                         b = reader.NamespaceURI;
                    
                     Console.WriteLine("attribute \"ignore-it\": " + a);
