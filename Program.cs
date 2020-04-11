@@ -14,28 +14,32 @@ namespace ReadFileXML
         {
             XmlTextReader reader = new XmlTextReader("data.xml");
             int sum = 0;
-            int scanOrNo = 0;
+            int has_atr_ignore_it = 0;
+            
             while (reader.Read())
             {
 
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "number" )
+                if (reader.NodeType == XmlNodeType.Element &&(reader.Name == "ns1:number" || reader.Name == "number"))
                 {
-                    string a = "NULL";
-                    if(reader.HasAttributes)
+                    string a = "false";
+                    string b = "NULL";
+                    if (reader.HasAttributes)
                         a = reader.GetAttribute("ignore-it");
+                        b = reader.NamespaceURI;
                    
-                    Console.WriteLine("string:" + a);
+                    Console.WriteLine("attribute \"ignore-it\": " + a);
+                    Console.WriteLine("namespace: " + b);
                     
                     string s1 = reader.ReadElementContentAsString();
 
-                    if (scanOrNo % 2 == 0 && a  != "true" )
-                        sum += int.Parse(s1);
+                    if (has_atr_ignore_it % 2 == 0 && b != "http://ignore/it" && a  != "true" )
+                      int.TryParse(s1, out sum);
 
-                    Console.WriteLine(s1);
+                    Console.WriteLine("value: " + s1);
                 }
                 else if (reader.Name == "ignore-it")
                 {
-                    scanOrNo += 1;
+                    has_atr_ignore_it += 1;
                 }
                       
             }
