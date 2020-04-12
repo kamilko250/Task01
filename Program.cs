@@ -15,7 +15,7 @@ namespace ReadFileXML
             XmlTextReader reader = new XmlTextReader("data.xml");
             int sum = 0;
             int has_atr_ignore_it = 0;
-            
+            int bfr_sum = 0;
             while (reader.Read())
             {
 
@@ -33,9 +33,11 @@ namespace ReadFileXML
                     
                     string s1 = reader.ReadElementContentAsString();
 
-                    if (has_atr_ignore_it % 2 == 0 && b != "http://ignore/it" && a  != "true" )
-                      int.TryParse(s1, out sum);
-
+                    if (has_atr_ignore_it % 2 == 0 && b != "http://ignore/it" && a != "true")
+                    {
+                        int.TryParse(s1, out bfr_sum);
+                        sum += bfr_sum;
+                    }
                     Console.WriteLine("value: " + s1);
                 }
                 else if (reader.Name == "ignore-it")
@@ -43,6 +45,7 @@ namespace ReadFileXML
                     has_atr_ignore_it += 1;
                 }
                       
+
             }
             Console.WriteLine("sum = "+sum);       
             Console.ReadKey();
