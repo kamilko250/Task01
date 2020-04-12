@@ -28,7 +28,7 @@ namespace ReadFileXML
                         a = reader.GetAttribute("ignore-it");
                     if (reader.Namespaces)
                         b = reader.NamespaceURI;
-                  
+                    //Extra 
 		    //Chcę żeby te diagnostyczne linie wyświetlały się w zależności od tego czy ustawiona jest zmienna środowiskowa PROGRAM_VERBOSE=1 
                     //Console.WriteLine("attribute \"ignore-it\": " + a);
                     //Console.WriteLine("namespace: " + b);
