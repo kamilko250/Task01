@@ -28,8 +28,8 @@ namespace ReadFileXML
                     if (reader.Namespaces)
                         b = reader.NamespaceURI;
                    
-                    Console.WriteLine("attribute \"ignore-it\": " + a);
-                    Console.WriteLine("namespace: " + b);
+                    //Console.WriteLine("attribute \"ignore-it\": " + a);
+                    //Console.WriteLine("namespace: " + b);
                     
                     string s1 = reader.ReadElementContentAsString();
 
@@ -38,7 +38,7 @@ namespace ReadFileXML
                         int.TryParse(s1, out bfr_sum);
                         sum += bfr_sum;
                     }
-                    Console.WriteLine("value: " + s1);
+                    //Console.WriteLine("value: " + s1);
                 }
                 else if (reader.Name == "ignore-it")
                 {
@@ -48,7 +48,7 @@ namespace ReadFileXML
 
             }
             Console.WriteLine("sum = "+sum);       
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
    
