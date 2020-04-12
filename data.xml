@@ -5,6 +5,9 @@
 	Jaki wynik teraz otrzymasz?
 	Uwaga: Dodatkowo zapoznanie z <![CDATA[:))))]]>
 -->
+	
+<!DOCTYPE numbers [ <!ENTITY sample_value "9" > ]>
+
 <numbers xmlns:ns1="http://ignore/it">
 	<number ignore-it="true">1</number>
 	<number>2</number>
@@ -25,4 +28,6 @@
 	<ns1:number><![CDATA[8]]></ns1:number>
 	<!--Extra element poza tagiem-->
 	100
+	<number>&sample_value;</number>
+
 </numbers>
