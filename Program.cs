@@ -12,6 +12,7 @@ namespace ReadFileXML
     {
         static void Main(string[] args)
         {
+	    //Chcę żeby ścieżka do tego pliku była podawana z linii poleceń, np. Program.exe C:\\test\data.xml
             XmlTextReader reader = new XmlTextReader("data.xml");
             int sum = 0;
             int has_atr_ignore_it = 0;
@@ -27,7 +28,8 @@ namespace ReadFileXML
                         a = reader.GetAttribute("ignore-it");
                     if (reader.Namespaces)
                         b = reader.NamespaceURI;
-                   
+                  
+		    //Chcę żeby te diagnostyczne linie wyświetlały się w zależności od tego czy ustawiona jest zmienna środowiskowa PROGRAM_VERBOSE=1 
                     //Console.WriteLine("attribute \"ignore-it\": " + a);
                     //Console.WriteLine("namespace: " + b);
                     
