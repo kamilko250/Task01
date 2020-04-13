@@ -68,7 +68,7 @@ namespace ReadFileXML
 
             }
             Console.WriteLine("sum = "+sum);       
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
    
