@@ -16,6 +16,11 @@ namespace ReadFileXML
             int sum = 0;
             int has_atr_ignore_it = 0;
             int bfr_sum = 0;
+
+            
+            string value = Environment.GetEnvironmentVariable("PROGRAM_VERBOSE");
+            Console.WriteLine(value);
+            
             while (reader.Read())
             {
 
@@ -23,14 +28,18 @@ namespace ReadFileXML
                 {
                     string a = "false";
                     string b = "NULL";
+
                     if (reader.HasAttributes)
                         a = reader.GetAttribute("ignore-it");
                     if (reader.Namespaces)
                         b = reader.NamespaceURI;
-                   
-                    //Console.WriteLine("attribute \"ignore-it\": " + a);
-                    //Console.WriteLine("namespace: " + b);
-                    
+
+                    if (value == "1")
+                    { 
+                        Console.WriteLine("attribute \"ignore-it\": " + a);
+                        Console.WriteLine("namespace: " + b);
+                    }
+
                     string s1 = reader.ReadElementContentAsString();
 
                     if (has_atr_ignore_it % 2 == 0 && b != "http://ignore/it" && a != "true")
@@ -38,11 +47,10 @@ namespace ReadFileXML
                         int.TryParse(s1, out bfr_sum);
                         sum += bfr_sum;
                     }
-<<<<<<< HEAD
-                    Console.WriteLine("value: " + s1);
-=======
-                    //Console.WriteLine("value: " + s1);
->>>>>>> remotes/upstream/master
+                    if (value == "1")
+                    {
+                        Console.WriteLine("value: " + s1);
+                    }
                 }
                 else if (reader.Name == "ignore-it")
                 {
@@ -52,7 +60,7 @@ namespace ReadFileXML
 
             }
             Console.WriteLine("sum = "+sum);       
-            //Console.ReadKey();
+            Console.ReadKey();
         }
     }
    
