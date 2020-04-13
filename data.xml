@@ -9,9 +9,9 @@
 <!DOCTYPE numbers [ <!ENTITY sample_value "9" > ]>
 
 <numbers xmlns:ns1="http://ignore/it">
-	<number ignore-it="true">1</number>
-	<number>2</number>
-	<number>3</number>
+	<number ignore-it="true" base="10">1</number>
+	<number base="10">2</number>
+	<number base="10">3</number>
 	<number ignore-it="true">4</number>
 	<ignore-it>
 	    <number>100</number>
@@ -21,7 +21,11 @@
 	</ignore-it>
 	<ns1:number>5</ns1:number>
 	<!--Jak sama nazwa mowi elementy z przestrzeni ns1 powinne byc pomijane-->
-	<number>6</number>
+	<!--
+		Ta liczba ma podstawę 16. Musisz to uwzględnić. Jeśli w tagu number jest obecny atrybut base, to ten atrybut
+       		wskazuje podstawę liczby.	
+	--> 
+	<number base="16">0x0A</number>
 	<number><![CDATA[7]]></number>
 	<!--Tym razem pusta wartość:)-->
 	<number></number>
@@ -29,5 +33,12 @@
 	<!--Extra element poza tagiem-->
 	100
 	<number>&sample_value;</number>
+	<number base="2">1010</number>
+	<!--
+		Tutaj liczba w systemie dwójkowym dodatkowo jest zakodowana w Base64.
+		Przed sumowaniem musisz ją odkodować, później zamienić na system 10 i dodać.
+		Wprowadzamy kodowanie Base64.
+	-->
+	<number base="2" enc="base64">MTExMA==</number>
 
 </numbers>
