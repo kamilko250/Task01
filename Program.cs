@@ -12,7 +12,15 @@ namespace ReadFileXML
     {
         static void Main(string[] args)
         {
-            XmlTextReader reader = new XmlTextReader("data.xml");
+            XmlTextReader reader;
+            
+            if (args.Count() > 0 && args[0] != "null")
+                reader = new XmlTextReader(args[0]);
+            else
+                reader = new XmlTextReader("data.xml");
+
+
+
             int sum = 0;
             int has_atr_ignore_it = 0;
             int bfr_sum = 0;
