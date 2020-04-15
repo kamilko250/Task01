@@ -34,26 +34,54 @@ namespace ReadFileXML
 
                 if (reader.NodeType == XmlNodeType.Element &&(reader.Name == "ns1:number" || reader.Name == "number"))
                 {
-                    string a = "false";
-                    string b = "NULL";
+                    string atr_ignore = "false";
+                    string ns_ignore = "NULL";
+                    string num_base = "NULL";
+                    string enc = "NULL";
 
                     if (reader.HasAttributes)
-                        a = reader.GetAttribute("ignore-it");
+                    {
+                        atr_ignore = reader.GetAttribute("ignore-it");
+                        num_base = reader.GetAttribute("base");
+                        enc = reader.GetAttribute("enc");
+                        
+                    }
                     if (reader.Namespaces)
-                        b = reader.NamespaceURI;
+                        ns_ignore = reader.NamespaceURI;
 
                     if (value == "1")
                     { 
-                        Console.WriteLine("attribute \"ignore-it\": " + a);
-                        Console.WriteLine("namespace: " + b);
+                        Console.WriteLine("attribute \"ignore-it\": " + atr_ignore);
+                        Console.WriteLine("namespace: " + ns_ignore);
                     }
 
                     string s1 = reader.ReadElementContentAsString();
-
-                    if (has_atr_ignore_it % 2 == 0 && b != "http://ignore/it" && a != "true")
+                    string encode = "NULL";
+                    if (has_atr_ignore_it % 2 == 0 && ns_ignore != "http://ignore/it" && atr_ignore != "true")
                     {
-                        int.TryParse(s1, out bfr_sum);
-                        sum += bfr_sum;
+                        if (enc == "base64" && num_base == "2")
+                        {
+                            byte[] data = Convert.FromBase64String(s1);
+                            string decoded = ASCIIEncoding.ASCII.GetString(data);
+                            bfr_sum = Convert.ToInt32(decoded, 2);
+                        }
+                        else
+                        {
+                            if (num_base == "16")
+                            {
+                                bfr_sum = Convert.ToSByte(s1, 16);
+                            }
+                            else if (num_base == "2")
+                            {
+                                bfr_sum = Convert.ToSByte(s1, 2);
+                            }
+
+                            else
+                            {
+                                int.TryParse(s1, out bfr_sum);
+                            }
+                            sum += bfr_sum;
+                        }
                     }
                     if (value == "1")
                     {
@@ -68,7 +96,7 @@ namespace ReadFileXML
 
             }
             Console.WriteLine("sum = "+sum);       
-            //Console.ReadKey();
+            Console.ReadKey();
         }
     }
    
