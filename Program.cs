@@ -56,7 +56,7 @@ namespace ReadFileXML
                     }
 
                     string s1 = reader.ReadElementContentAsString();
-                    string encode = "NULL";
+                    
                     if (has_atr_ignore_it % 2 == 0 && ns_ignore != "http://ignore/it" && atr_ignore != "true")
                     {
                         if (enc == "base64" && num_base == "2")
